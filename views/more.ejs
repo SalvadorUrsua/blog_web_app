@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+    <div class="container">
+        <h1>Mga Tula:</h1>
+        <% data.forEach(poem => { %>
+            <a href="/showmore?id=<%= poem.id %>" ><%= poem.title %></a>
+        <% }) %>
+        <div class="more">
+            <form action="/back" method="get">
+                <button type="submit" id="btnBack">Back ◀</button>
+                <% if(backagain===true) { %>
+                    <script>document.getElementById("btnBack").style.visibility = "visible"</script>
+                <% } else { %>
+                    <script>document.getElementById("btnBack").style.visibility = "hidden"</script>
+                <% } %>
+            </form>            
+            <form action="/more" method="get">
+                <button type="submit" id="btnNext">Next ▶</button>
+                <% if(again===true) { %>
+                    <script>document.getElementById("btnNext").style.visibility = "visible"</script>
+                <% } else { %>
+                    <script>document.getElementById("btnNext").style.visibility = "hidden"</script>
+                <% } %>
+            </form>
+
+        </div>
+    </div>
+    <!-- <script>
+        function showButton() {
+            console.log("showButton");
+        }
+
+        function hideButton() {
+            console.log("hideButton");
+        }
+    </script> -->
+<%- include("partials/footer.ejs") %>
