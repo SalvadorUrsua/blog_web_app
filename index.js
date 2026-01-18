@@ -83,46 +83,46 @@ async function getLastPoem(id) {
 //     }
 // }
 
-async function getInitialPoems() {
-    try {
-        totalPoems = 0;
-        offsetPoems = 0;
-        remainingPoems = false;
-        backRemainingPoems = false;
-        lastFirstIdPicked = -1;
-        lastTotalPicked = -1;
-        firstPoemId = -1;
-        backOffset = -1;
-        await getTotalPoems();
-        backRemainingPoems = false;
-        const results = await db.query("SELECT * FROM poems ORDER by id ASC LIMIT $1 OFFSET $2", [limitPoems, offsetPoems]);             
-        const rowsLength = results.rows.length;
-        offsetPoems = offsetPoems + rowsLength;
-        if(offsetPoems > totalPoems || offsetPoems === totalPoems) {
-            remainingPoems = false;
-            // totalPoems = 0;
-            offsetPoems = 0;
-            lastFirstIdPicked = results.rows[0].id
-            if(lastFirstIdPicked > firstPoemId) {
-                backRemainingPoems = true;
-            } else {
-                backRemainingPoems = false;
-            }
-        } else {
-            remainingPoems = true;
-            lastFirstIdPicked = results.rows[0].id;
-            lastTotalPicked = rowsLength;
-            if(lastFirstIdPicked > firstPoemId) {
-                backRemainingPoems = true;
-            } else {
-                backRemainingPoems = false;
-            }
-        }
-        return results.rows;  
-    } catch(err) {
-        console.log(err);
-    }
-}
+// async function getInitialPoems() {
+//     try {
+//         totalPoems = 0;
+//         offsetPoems = 0;
+//         remainingPoems = false;
+//         backRemainingPoems = false;
+//         lastFirstIdPicked = -1;
+//         lastTotalPicked = -1;
+//         firstPoemId = -1;
+//         backOffset = -1;
+//         await getTotalPoems();
+//         backRemainingPoems = false;
+//         const results = await db.query("SELECT * FROM poems ORDER by id ASC LIMIT $1 OFFSET $2", [limitPoems, offsetPoems]);             
+//         const rowsLength = results.rows.length;
+//         offsetPoems = offsetPoems + rowsLength;
+//         if(offsetPoems > totalPoems || offsetPoems === totalPoems) {
+//             remainingPoems = false;
+//             // totalPoems = 0;
+//             offsetPoems = 0;
+//             lastFirstIdPicked = results.rows[0].id
+//             if(lastFirstIdPicked > firstPoemId) {
+//                 backRemainingPoems = true;
+//             } else {
+//                 backRemainingPoems = false;
+//             }
+//         } else {
+//             remainingPoems = true;
+//             lastFirstIdPicked = results.rows[0].id;
+//             lastTotalPicked = rowsLength;
+//             if(lastFirstIdPicked > firstPoemId) {
+//                 backRemainingPoems = true;
+//             } else {
+//                 backRemainingPoems = false;
+//             }
+//         }
+//         return results.rows;  
+//     } catch(err) {
+//         console.log(err);
+//     }
+// }
 
 async function getNextPoems() {
     try {
@@ -234,14 +234,14 @@ app.get("/add", async (req, res) => {
     });
 });
 
-app.get("/initial", async (req, res) => {
-  const poems = await getInitialPoems();
-    res.render("more.ejs", {
-      data: poems,
-      again: remainingPoems,
-      backagain: backRemainingPoems,
-    });
-});  
+// app.get("/initial", async (req, res) => {
+//   const poems = await getInitialPoems();
+//     res.render("more.ejs", {
+//       data: poems,
+//       again: remainingPoems,
+//       backagain: backRemainingPoems,
+//     });
+// });  
 
 app.get("/more", async (req, res) => {
   const poems = await getNextPoems();
