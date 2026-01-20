@@ -138,6 +138,30 @@ html, body {
     font-size: 15px;
 }
 
+a {
+    color: white;
+    font-size: 25px;
+    text-shadow: -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
+#btnNext, #btnBack {
+    width: 80px;
+    height: 30px;
+    margin-top: 30px;
+}
+
+.container > .more {
+    display: flex;
+    justify-content: center;
+}
+
+.more button {
+    border-radius: 5px;
+}
+
 @media (max-width: 768px) {
     .stanzas {
         max-height: 200px;  
@@ -167,28 +191,4 @@ html, body {
         justify-content: center;
         align-items: last baseline;
     }
-}
-
-a {
-    color: white;
-    font-size: 25px;
-    text-shadow: -1px -1px 0 #000000,
-     1px -1px 0 #000000,
-    -1px  1px 0 #000000,
-     1px  1px 0 #000000;
-}
-
-#btnNext, #btnBack {
-    width: 80px;
-    height: 30px;
-    margin-top: 30px;
-}
-
-.container > .more {
-    display: flex;
-    justify-content: center;
-}
-
-.more button {
-    border-radius: 5px;
 }
