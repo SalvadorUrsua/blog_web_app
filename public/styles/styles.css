@@ -66,6 +66,9 @@ html, body {
     display: flex;
     justify-content: right;
     align-items: last baseline;    
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 5px;
 }
 
 .pageButtons button {
@@ -190,5 +193,17 @@ a {
         display: flex;
         justify-content: center;
         align-items: last baseline;
+        padding: 5px;
+        margin-bottom: 0px;
+    }
+
+    .pageButtons button {
+        font-size: 10px;
+        width: 40px;
+        border-radius: 3px;
+        margin-left: 2px;
+        margin-right: 2px;
+        background-color: #E7DEAF;
+        box-shadow: horizontal-offset vertical-offset blur-radius spread-radius color;
     }
 }
